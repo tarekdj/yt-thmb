@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-module.exports = async function getThumnail(video) {
+module.exports = async function getThumbnail(video) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(`https://www.youtube.com/results?search_query=${video}`);

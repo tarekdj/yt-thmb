@@ -2,7 +2,7 @@
 
 const chalk = require('chalk');
 const boxen = require('boxen');
-const getThumnail = require('../index');
+const getThumbnail = require('../index');
 
 const boxenOptions = {
  padding: 1,
