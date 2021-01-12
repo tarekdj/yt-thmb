@@ -1,7 +1,13 @@
 const puppeteer = require('puppeteer');
 
+function getPuppeteerLaunchOptions() {
+    return process.env.TEST_MODE ? {args: ['--no-sandbox', '--disable-setuid-sandbox']} : {};
+}
+
 module.exports = async function getThumbnail(video) {
-    const browser = await puppeteer.launch();
+    const puppeteerLaunchOptions = getPuppeteerLaunchOptions();
+    console.log(puppeteerLaunchOptions);
+    const browser = await puppeteer.launch(puppeteerLaunchOptions);
     const page = await browser.newPage();
     await page.goto(`https://www.youtube.com/results?search_query=${video}`);
     const result = await page.evaluate((v) => {

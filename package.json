@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "TEST_MODE=1 jest"
   },
   "author": "",
   "license": "ISC",
