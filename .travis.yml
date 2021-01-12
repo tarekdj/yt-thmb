@@ -2,5 +2,8 @@ language: node_js
 node_js: node
 services: xvfb
 
+env:
+  - CHROMIUM=true
+
 script:
   - npm run test
