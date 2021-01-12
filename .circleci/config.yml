@@ -1,9 +1,18 @@
 version: 2.1
-orbs:
-  node: circleci/node@4.1.0
-  #puppeteer: threetreeslight/puppeteer@0.1.2
-  
-workflows:
-  node-tests:
-    jobs:
-      - node/test
+jobs:
+  test:
+    docker:
+      - image: circleci/node:12 # Use your desired version
+        environment:
+          NODE_ENV: development # Only needed if puppeteer is in `devDependencies`
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test
+
+# Orchestrate our job run sequence
+#workflows:
+#  build_and_test:
+#    jobs:
+#      - build
+#      - test
