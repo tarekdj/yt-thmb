@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.1.0
+  node: circleci/node@14.1.0
   #puppeteer: threetreeslight/puppeteer@0.1.2
   
 workflows:
