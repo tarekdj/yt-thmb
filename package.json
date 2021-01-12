@@ -1,0 +1,20 @@
+{
+  "name": "yt-thumb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^5.0.0",
+    "puppeteer": "^5.5.0",
+    "shalk": "^2.4.2",
+    "yargs": "^16.2.0"
+  },
+  "bin": {
+    "yt-thumb": "./bin/index.js"
+  }
+}
