@@ -2,7 +2,7 @@ const getThumbnail = require('../index');
 
 test('Gets a vidoo title and thumb url', async () => {
     
-    jest.setTimeout(3000);
+    jest.setTimeout(10000);
     try {
         const result = await getThumbnail('YGfv28PtXvA');
         expect.assertions(2);
