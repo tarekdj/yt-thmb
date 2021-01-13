@@ -1,23 +1,18 @@
-const puppeteer = require('puppeteer');
-
-// function getPuppeteerLaunchOptions() {
-//     return process.env.TEST_MODE ? {args: ['--no-sandbox', '--disable-setuid-sandbox']} : {};
-// }
+const fecth = require('isomorphic-fetch');
 
 module.exports = async function getThumbnail(video) {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(`https://www.youtube.com/results?search_query=${video}`);
-    const result = await page.evaluate((v) => {
-      // Thanks Stackoverflow for the hint: https://stackoverflow.com/a/50317524
-      const videoRenderer = window.ytInitialData.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].videoRenderer;
+    const response = await fetch(`https://www.youtube.com/results?search_query=${video}`, {headers: {
+      "User-agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0"
+    }});
 
-      return {
-        title: videoRenderer.title.runs[0].text,
-        url: videoRenderer.richThumbnail.movingThumbnailRenderer.movingThumbnailDetails.thumbnails[0].url
-      }
-    }, video);
+    const html = await response.text();
 
-    await browser.close();
+    const pattern = `https:\/\/i\.ytimg\.com\/an_webp\/${video}\/mqdefault.+?"`;
+    const regex = new RegExp(pattern, 'gi');
+
+    const results = html.match(regex);
+    const [result] = results;
+    const clean = result.replace('"','').replace(/\\u0026/g, '&');
+
     return result;
 }

@@ -21,7 +21,7 @@ const options = yargs
 
 (async (video) => {
 
-  const result = await getThumnail(video);
+  const result = await getThumbnail(video);
   const msgBox = boxen( `${chalk.bold(result.title)} \n\n${result.url}`, boxenOptions );
 
   console.log(msgBox);
