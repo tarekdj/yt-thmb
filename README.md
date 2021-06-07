@@ -1,15 +1,31 @@
-# yt-thmb
-Get the animated thumbnail URL of a Youtube video
+# YT-Thumb
 
-## Usage example
+---
+
+Get the animated thumbnail URL of a Youtube video through the video ID.
+
+## Usage
+
+### Module
+
+```js
+const fetchThumbnail = require("yt-thumb");
+(async () => {
+  const result = await fetchThumbnail("iPIo9uez40I");
+  console.log(result);
+  // https://i.ytimg.com/an_webp/iPIo9uez40I/mqdefault_6s.webp?du=3000&sqp=CKio-oUG&rs=AOn4CLARrnH1ljt0DsN5llb66oRJ56NbgA
+})();
 ```
-❯ yt-thumb -v YGfv28PtXvA 
+
+### CLI
+
+```bash
+$ yt-thumb -v iPIo9uez40I
 
    ╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
    │                                                                                                                                     │
    │   Thumbnail found:                                                                                                                  │
-   │   https://i.ytimg.com/an_webp/YGfv28PtXvA/mqdefault_6s.webp?du=3000\u0026sqp=CICF_P8F\u0026rs=AOn4CLB6e_stFm3HrFLA4mspwEisgkRT2w"   │
+   │   https://i.ytimg.com/an_webp/iPIo9uez40I/mqdefault_6s.webp?du=3000&sqp=CKio-oUG&rs=AOn4CLARrnH1ljt0DsN5llb66oRJ56NbgA   │
    │                                                                                                                                     │
    ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
 ```
